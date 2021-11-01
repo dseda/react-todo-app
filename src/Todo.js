@@ -2,7 +2,13 @@ import React, { Component } from "react";
 
 class Todo extends Component {
   render() {
-    return <div>{this.props.task}</div>;
+    return (
+      <li>
+        {this.props.task}
+        <button>Edit</button>
+        <button>X</button>
+      </li>
+    );
   }
 }
 

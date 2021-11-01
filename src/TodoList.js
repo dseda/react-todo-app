@@ -5,13 +5,13 @@ import NewTodoForm from "./NewTodoForm";
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = { todos: [] };
+    this.state = { todos: [{ task: "Do sth" }] };
     this.addTodo = this.addTodo.bind(this);
   }
 
-  addTodo(newTodo) {
+  addTodo(todo) {
     this.setState({
-      todos: [...this.state.todos, newTodo],
+      todos: [...this.state.todos, todo],
     });
   }
 
@@ -23,8 +23,9 @@ class TodoList extends Component {
     ));
     return (
       <div>
-        <NewTodoForm />
+        <h2>Todo List</h2>
         <div>{todos}</div>
+        <NewTodoForm addTodo={this.addTodo} />
       </div>
     );
   }
