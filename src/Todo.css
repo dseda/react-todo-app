@@ -1,0 +1,28 @@
+.Todo {
+  display: flex;
+  padding: 10px 20px;
+}
+.Todo .NotDone {
+  border: 2px solid #808080;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin: 0 5px;
+  align-self: flex-center;
+}
+.Todo .Done {
+  background-color: green;
+}
+.Todo .Done + li {
+  text-decoration: 2px darkgreen line-through;
+}
+li {
+  display: inline-block;
+  align-self: center;
+  margin: 0 5px;
+}
+
+.Todo button {
+  margin: 0 5px;
+  align-self: flex-center;
+}

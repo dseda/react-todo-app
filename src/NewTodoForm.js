@@ -18,6 +18,7 @@ class NewTodoForm extends Component {
     const newTodo = {
       ...this.state,
       id: uuid(),
+      done: false,
     };
     this.props.addTodo(newTodo);
     this.setState({ task: "" });

@@ -5,10 +5,11 @@ import NewTodoForm from "./NewTodoForm";
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = { todos: [{ task: "Do sth" }] };
+    this.state = { todos: [{ task: "Add todo", done: false }] };
     this.addTodo = this.addTodo.bind(this);
     this.remove = this.remove.bind(this);
     this.update = this.update.bind(this);
+    this.toggleTodo = this.toggleTodo.bind(this);
   }
 
   addTodo(todo) {
@@ -29,15 +30,26 @@ class TodoList extends Component {
     });
     this.setState({ todos: updatedTodos });
   }
+  toggleTodo(id) {
+    const newTodos = this.state.todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, done: !todo.done };
+      }
+      return todo;
+    });
+    this.setState({ todos: newTodos });
+  }
   render() {
     const todos = this.state.todos.map((todo) => (
       <div>
         <Todo
+          toggleTodo={this.toggleTodo}
           remove={this.remove}
           update={this.update}
           task={todo.task}
           key={todo.id}
           id={todo.id}
+          isDone={todo.done}
         />
       </div>
     ));
