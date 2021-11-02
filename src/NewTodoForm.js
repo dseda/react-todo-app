@@ -29,6 +29,7 @@ class NewTodoForm extends Component {
           <label htmlFor="new">New Todo</label>
         </div>
         <input
+          key={this.state.id}
           id="new"
           name="newTodo"
           type="text"
