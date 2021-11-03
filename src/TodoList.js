@@ -13,8 +13,10 @@ class TodoList extends Component {
   }
 
   addTodo(todo) {
+    const newTodos = [...this.state.todos, todo];
+    // newTodos.sort(this.sortTodos);
     this.setState({
-      todos: [...this.state.todos, todo],
+      todos: newTodos,
     });
   }
 
@@ -37,8 +39,15 @@ class TodoList extends Component {
       }
       return todo;
     });
+
+    // newTodos.sort(this.sortTodos);
     this.setState({ todos: newTodos });
   }
+  // sortTodos(todo1, todo2) {
+  //   if (todo1.done) {
+  //     return 1;
+  //   } else return -1;
+  // }
   render() {
     const todos = this.state.todos.map((todo) => (
       <Todo

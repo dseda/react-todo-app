@@ -40,7 +40,9 @@ class Todo extends Component {
           </div>
           <li>{this.props.task}</li>
           <div className="Buttons">
-            <button onClick={this.handleClick}>X</button>
+            <button id="Delete" onClick={this.handleClick}>
+              X
+            </button>
 
             <button onClick={this.toggleForm} disabled={isEditting}>
               Edit

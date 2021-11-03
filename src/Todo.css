@@ -30,10 +30,7 @@
   background-size: 18px;
   background-repeat: no-repeat;
   background-position: center;
-}
-.Todo .Done + li {
-  text-decoration: 2px #1f363d line-through;
-  color: #1f363d;
+  animation: fadeIn 0.5s;
 }
 li {
   margin: 0 5px;
@@ -43,6 +40,20 @@ li {
   align-self: flex-start;
   font-size: 1.3rem;
   font-weight: 500;
+}
+
+.Todo .Done + li {
+  text-decoration: 2px #1f363d line-through;
+  color: #1f363d;
+  animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .Todo .Buttons {
@@ -60,12 +71,13 @@ li {
   box-shadow: 1px 2px 1px rgb(28, 109, 113);
   font-size: 1rem;
 }
+
 .Todo button:active {
-  background-color: rgb(4, 102, 126);
+  background-color: rgb(4, 87, 108);
 }
 .Todo button:disabled {
   color: rgb(225, 222, 222);
-  background-color: rgb(4, 102, 126);
+  background-color: rgb(4, 87, 108);
 }
 @media screen and (max-width: 600px) {
   li {
