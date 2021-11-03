@@ -30,36 +30,35 @@ class Todo extends Component {
   render() {
     let isEditting = this.state.isEditting;
     return (
-      <div>
-        <div className="Todo">
-          <div
-            className={`NotDone ${this.props.isDone ? "Done" : ""}`}
-            onClick={this.handleTodoCompletion}
-          >
-            {/* <img src={tick} /> */}
-          </div>
-          <li>{this.props.task}</li>
-          <div className="Buttons">
-            <button id="Delete" onClick={this.handleClick}>
-              X
-            </button>
+      <div class="Todo-Container">
+        {!isEditting ? (
+          <div className="Todo">
+            <div
+              className={`NotDone ${this.props.isDone ? "Done" : ""}`}
+              onClick={this.handleTodoCompletion}
+            ></div>
+            <li>{this.props.task}</li>
+            <div className="Buttons">
+              <button id="Delete" onClick={this.handleClick}>
+                X
+              </button>
 
-            <button onClick={this.toggleForm} disabled={isEditting}>
-              Edit
-            </button>
+              <button onClick={this.toggleForm} disabled={isEditting}>
+                Edit
+              </button>
+            </div>
           </div>
-        </div>
-        {isEditting ? (
-          <form onSubmit={this.handleUpdate}>
-            <input
-              type="text"
-              value={this.state.task}
-              onChange={this.handleChange}
-            />
-            <button>Save</button>
-          </form>
         ) : (
-          ""
+          <div class="Edit-Form-Container">
+            <form id="Edit-Todo-Form" onSubmit={this.handleUpdate}>
+              <input
+                type="text"
+                value={this.state.task}
+                onChange={this.handleChange}
+              />
+              <button>Save</button>
+            </form>
+          </div>
         )}
       </div>
     );

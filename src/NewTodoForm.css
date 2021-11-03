@@ -1,11 +1,22 @@
 form {
+  display: flex;
+  flex-wrap: wrap;
   text-align: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
   padding: 20px;
+  flex-direction: column;
 }
-
-input {
-  display: inline;
+form input#new {
+  padding: 2px;
+  width: 15rem;
 }
-label {
-  text-align: left;
+form button {
+  margin: 1rem;
+}
+form label#new-todo {
+  padding: 10px 20px;
+  font-weight: 500;
 }

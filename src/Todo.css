@@ -2,27 +2,28 @@
   width: 100%;
   display: flex;
   margin: 5px auto;
-  padding: 15px;
-  background-color: #9ec1a3;
+  padding: 30px 25px;
+  background-color: #8bc69472;
   justify-content: space-around;
   /* border-bottom: 1px rgb(223, 213, 213) solid; */
   width: 50%;
   color: #1f363d;
   min-width: fit-content;
 }
+.Edit-Form-Container {
+  background-color: #8bc69472;
+  width: 70%;
+  margin: 5px auto;
+}
 .Todo .NotDone {
-  border: 2px solid #d7cece;
+  border: 2px solid #0c745c;
   border-radius: 50%;
   width: 25px;
   height: 25px;
   /* padding: 10px; */
   align-self: flex-start;
 }
-/* img {
-  max-width: 100%;
-  width: 20px;
-  height: 20px;
-} */
+
 .Todo .Done {
   /* background-color: rgb(7, 154, 68); */
   background-color: green;
@@ -45,7 +46,7 @@ li {
 .Todo .Done + li {
   text-decoration: 2px #1f363d line-through;
   color: #1f363d;
-  animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s ease-out;
 }
 @keyframes fadeIn {
   0% {
@@ -59,28 +60,60 @@ li {
 .Todo .Buttons {
   align-self: flex-start;
 }
-.Todo button {
-  margin: 0px 4px;
+button {
+  margin: 0 4px;
   color: whitesmoke;
-  background-color: #40798c;
+  background-color: #1b7695;
   border: none;
-  padding: 5px 10px;
+  padding: 8px 10px;
   border-radius: 5px;
   display: inline;
   width: 3rem;
-  box-shadow: 1px 2px 1px rgb(28, 109, 113);
+  box-shadow: 1px 2px 1px rgb(20, 84, 87);
   font-size: 1rem;
+  text-align: center;
 }
 
-.Todo button:active {
+button:active {
   background-color: rgb(4, 87, 108);
 }
-.Todo button:disabled {
+button:disabled {
   color: rgb(225, 222, 222);
   background-color: rgb(4, 87, 108);
+}
+
+#Edit-Todo-Form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* width: 80%; */
+  flex-grow: inherit;
+}
+
+form input {
+  flex-grow: 1;
+  border: none;
+  background: #f7f1f1;
+  padding: 0 1rem;
+  font-size: initial;
+  /* margin: auto 1px; */
+  border-radius: 5px;
+}
+
+input,
+#Edit-Todo-Form button {
+  font-family: "Quicksand", sans-serif;
+  height: 2.2rem;
+}
+form button {
+  width: 3.5rem;
 }
 @media screen and (max-width: 600px) {
   li {
     width: 100px;
+  }
+
+  .Todo {
+    padding: 20px 10px;
   }
 }
