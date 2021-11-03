@@ -35,7 +35,9 @@ class Todo extends Component {
           <div
             className={`NotDone ${this.props.isDone ? "Done" : ""}`}
             onClick={this.handleTodoCompletion}
-          ></div>
+          >
+            {/* <img src={tick} /> */}
+          </div>
           <li>{this.props.task}</li>
           <div className="Buttons">
             <button onClick={this.handleClick}>X</button>

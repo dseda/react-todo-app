@@ -4,20 +4,21 @@
   padding: 20px 5px;
   min-height: 50vh;
   border-radius: 5px;
-  background: linear-gradient(
+  background-color: #c2e1c2;
+  /* background: linear-gradient(
     120deg,
     rgb(76, 190, 232),
     rgb(53, 158, 188),
     rgb(24, 153, 189),
     rgb(28, 133, 171)
-  );
+  ); */
 }
 .TodoList h1 {
   text-align: center;
   padding: 20px 20px 20px 50px;
   margin-bottom: 30px;
   border-bottom: 1px solid rgba(227, 227, 227, 0.38);
-  color: white;
+  color: #1f363d;
 }
 @media screen and (max-width: 600px) {
   .TodoList {

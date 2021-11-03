@@ -3,25 +3,37 @@
   display: flex;
   margin: 5px auto;
   padding: 15px;
-  background-color: rgba(247, 247, 247, 0.174);
+  background-color: #9ec1a3;
   justify-content: space-around;
   /* border-bottom: 1px rgb(223, 213, 213) solid; */
   width: 50%;
-  color: rgb(255, 255, 255);
+  color: #1f363d;
   min-width: fit-content;
 }
 .Todo .NotDone {
   border: 2px solid #d7cece;
   border-radius: 50%;
-  padding: 10px;
+  width: 25px;
+  height: 25px;
+  /* padding: 10px; */
   align-self: flex-start;
 }
+/* img {
+  max-width: 100%;
+  width: 20px;
+  height: 20px;
+} */
 .Todo .Done {
-  background-color: rgb(69, 216, 0);
+  /* background-color: rgb(7, 154, 68); */
+  background-color: green;
+  background-image: url("./tick.png");
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .Todo .Done + li {
-  text-decoration: 4px rgb(69, 216, 0) line-through;
-  color: rgb(240, 235, 235);
+  text-decoration: 2px #1f363d line-through;
+  color: #1f363d;
 }
 li {
   margin: 0 5px;
@@ -30,7 +42,7 @@ li {
   list-style: none;
   align-self: flex-start;
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .Todo .Buttons {
@@ -39,7 +51,7 @@ li {
 .Todo button {
   margin: 0px 4px;
   color: whitesmoke;
-  background-color: rgb(7, 154, 68);
+  background-color: #40798c;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
