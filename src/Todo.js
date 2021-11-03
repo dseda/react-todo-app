@@ -28,9 +28,24 @@ class Todo extends Component {
     this.props.toggleTodo(this.props.id);
   }
   render() {
-    if (this.state.isEditting) {
-      return (
-        <div>
+    let isEditting = this.state.isEditting;
+    return (
+      <div>
+        <div className="Todo">
+          <div
+            className={`NotDone ${this.props.isDone ? "Done" : ""}`}
+            onClick={this.handleTodoCompletion}
+          ></div>
+          <li>{this.props.task}</li>
+          <div className="Buttons">
+            <button onClick={this.handleClick}>X</button>
+
+            <button onClick={this.toggleForm} disabled={isEditting}>
+              Edit
+            </button>
+          </div>
+        </div>
+        {isEditting ? (
           <form onSubmit={this.handleUpdate}>
             <input
               type="text"
@@ -39,21 +54,11 @@ class Todo extends Component {
             />
             <button>Save</button>
           </form>
-        </div>
-      );
-    } else {
-      return (
-        <div className="Todo">
-          <div
-            className={`NotDone ${this.props.isDone ? "Done" : ""}`}
-            onClick={this.handleTodoCompletion}
-          ></div>
-          <li>{this.props.task}</li>
-          <button onClick={this.toggleForm}>Edit</button>
-          <button onClick={this.handleClick}>X</button>
-        </div>
-      );
-    }
+        ) : (
+          ""
+        )}
+      </div>
+    );
   }
 }
 

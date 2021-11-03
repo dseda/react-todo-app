@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuid } from "uuid";
-import TodoList from "./TodoList";
+import "./NewTodoForm.css";
 class NewTodoForm extends Component {
   constructor(props) {
     super(props);
@@ -15,13 +15,18 @@ class NewTodoForm extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
+
     const newTodo = {
       ...this.state,
       id: uuid(),
       done: false,
     };
-    this.props.addTodo(newTodo);
-    this.setState({ task: "" });
+    if (newTodo.task !== "") {
+      this.props.addTodo(newTodo);
+      this.setState({ task: "" });
+    } else {
+      alert("Please enter a todo");
+    }
   }
   render() {
     return (

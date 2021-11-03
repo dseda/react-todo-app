@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Todo from "./Todo";
 import NewTodoForm from "./NewTodoForm";
-
+import "./TodoList.css";
 class TodoList extends Component {
   constructor(props) {
     super(props);
@@ -41,22 +41,20 @@ class TodoList extends Component {
   }
   render() {
     const todos = this.state.todos.map((todo) => (
-      <div>
-        <Todo
-          toggleTodo={this.toggleTodo}
-          remove={this.remove}
-          update={this.update}
-          task={todo.task}
-          key={todo.id}
-          id={todo.id}
-          isDone={todo.done}
-        />
-      </div>
+      <Todo
+        toggleTodo={this.toggleTodo}
+        remove={this.remove}
+        update={this.update}
+        task={todo.task}
+        key={todo.id}
+        id={todo.id}
+        isDone={todo.done}
+      />
     ));
     return (
-      <div>
-        <h2>Todo List</h2>
-        <div>{todos}</div>
+      <div className="TodoList">
+        <h1>Todo List</h1>
+        {todos}
         <NewTodoForm addTodo={this.addTodo} />
       </div>
     );
