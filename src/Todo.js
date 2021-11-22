@@ -30,14 +30,14 @@ class Todo extends Component {
   render() {
     let isEditting = this.state.isEditting;
     return (
-      <div class="Todo-Container">
+      <div className="Todo-Container">
         {!isEditting ? (
           <div className="Todo">
             <div
               className={`NotDone ${this.props.isDone ? "Done" : ""}`}
               onClick={this.handleTodoCompletion}
             ></div>
-            <li>{this.props.task}</li>
+            <li key={this.key}>{this.props.task}</li>
             <div className="Buttons">
               <button id="Delete" onClick={this.handleClick}>
                 X
@@ -49,7 +49,7 @@ class Todo extends Component {
             </div>
           </div>
         ) : (
-          <div class="Edit-Form-Container">
+          <div className="Edit-Form-Container">
             <form id="Edit-Todo-Form" onSubmit={this.handleUpdate}>
               <input
                 type="text"

@@ -2,26 +2,38 @@ import React, { Component } from "react";
 import Todo from "./Todo";
 import NewTodoForm from "./NewTodoForm";
 import "./TodoList.css";
+// import ls from "local-storage";
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = { todos: [{ task: "Add todo", done: false }] };
+    this.state = { todos: [] };
     this.addTodo = this.addTodo.bind(this);
     this.remove = this.remove.bind(this);
     this.update = this.update.bind(this);
     this.toggleTodo = this.toggleTodo.bind(this);
   }
-
+  async componentDidMount() {
+    await this.setState({
+      todos: JSON.parse(localStorage.getItem("todos")) || [
+        { task: "Add todo", id: "1", done: false },
+      ],
+    });
+  }
   addTodo(todo) {
     const newTodos = [...this.state.todos, todo];
+    // const newTodos = [...JSON.parse(localStorage.getItem("todos")), todo];
+    localStorage.setItem("todos", JSON.stringify(newTodos));
     // newTodos.sort(this.sortTodos);
     this.setState({
       todos: newTodos,
     });
   }
 
-  remove(id) {
-    this.setState({ todos: this.state.todos.filter((todo) => todo.id !== id) });
+  async remove(id) {
+    await this.setState({
+      todos: this.state.todos.filter((todo) => todo.id !== id),
+    });
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
   }
   update(id, updatedTask) {
     const updatedTodos = this.state.todos.map((todo) => {
@@ -30,6 +42,7 @@ class TodoList extends Component {
       }
       return todo;
     });
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
     this.setState({ todos: updatedTodos });
   }
   toggleTodo(id) {
@@ -42,6 +55,7 @@ class TodoList extends Component {
 
     // newTodos.sort(this.sortTodos);
     this.setState({ todos: newTodos });
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
   }
   // sortTodos(todo1, todo2) {
   //   if (todo1.done) {
@@ -49,22 +63,39 @@ class TodoList extends Component {
   //   } else return -1;
   // }
   render() {
-    const todos = this.state.todos.map((todo) => (
-      <Todo
-        toggleTodo={this.toggleTodo}
-        remove={this.remove}
-        update={this.update}
-        task={todo.task}
-        key={todo.id}
-        id={todo.id}
-        isDone={todo.done}
-      />
-    ));
+    let todos = "";
+    if (this.state.todos.length === 0) {
+      // console.log(this.props.todos);
+      todos = this.state.todos.map((todo) => (
+        <Todo
+          toggleTodo={this.toggleTodo}
+          remove={this.remove}
+          update={this.update}
+          task={todo.task}
+          key={todo.id}
+          id={todo.id}
+          isDone={todo.done}
+        />
+      ));
+    } else {
+      todos = this.state.todos.map((todo) => (
+        <Todo
+          toggleTodo={this.toggleTodo}
+          remove={this.remove}
+          update={this.update}
+          task={todo.task}
+          key={todo.id}
+          id={todo.id}
+          isDone={todo.done}
+        />
+      ));
+    }
+
     return (
       <div className="TodoList">
         <h1>Todo App</h1>
-        {todos}
         <NewTodoForm addTodo={this.addTodo} />
+        {todos}
       </div>
     );
   }
