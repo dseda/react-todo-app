@@ -4,13 +4,13 @@ class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = { isEditting: false, task: this.props.task };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleTodoCompletion = this.handleTodoCompletion.bind(this);
   }
-  handleClick(e) {
+  handleDelete(e) {
     this.props.remove(this.props.id);
   }
   handleChange(e) {
@@ -39,7 +39,7 @@ class Todo extends Component {
             ></div>
             <li key={this.key}>{this.props.task}</li>
             <div className="Buttons">
-              <button id="Delete" onClick={this.handleClick}>
+              <button id="Delete" onClick={this.handleDelete}>
                 X
               </button>
 
