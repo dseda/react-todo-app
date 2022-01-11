@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Todo from "./Todo";
-import NewTodoForm from "./NewTodoForm";
+import Todo from "../Todo/Todo";
+import NewTodoForm from "../NewTodoForm/NewTodoForm";
 import "./TodoList.css";
 class TodoList extends Component {
   constructor(props) {
