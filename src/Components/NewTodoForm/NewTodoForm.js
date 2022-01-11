@@ -1,53 +1,46 @@
-import React, { Component } from "react";
+import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import "./NewTodoForm.css";
-class NewTodoForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      task: "",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleChange(e) {
-    this.setState({ task: e.target.value });
-  }
-  handleSubmit(e) {
-    e.preventDefault();
 
-    const newTodo = {
-      ...this.state,
-      id: uuid(),
-      done: false,
-    };
-    if (newTodo.task !== "") {
-      this.props.addTodo(newTodo);
-      this.setState({ task: "" });
+function NewTodoForm({ addTodo, todos }) {
+  const [todo, setTask] = useState({ task: "", id: "", done: false });
+
+  const handleInputChange = (e) => {
+    setTask({ task: e.target.value });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (todo.task != "") {
+      let newTodo = {
+        task: todo.task,
+        id: uuid(),
+        done: false,
+      };
+      addTodo([...todos, newTodo]);
+      setTask({ task: "" });
     } else {
       alert("Please enter a todo");
+      return false;
     }
-  }
-  render() {
-    return (
-      <form id="New-Todo-Form" onSubmit={this.handleSubmit}>
-        <label id="new-todo" htmlFor="new">
-          New Todo
-        </label>
-        <div>
-          <input
-            key={this.state.id}
-            id="new"
-            name="newTodo"
-            type="text"
-            value={this.state.task}
-            onChange={this.handleChange}
-          ></input>
-          <button>Add</button>
-        </div>
-      </form>
-    );
-  }
+  };
+  return (
+    <form id="New-Todo-Form" onSubmit={handleFormSubmit}>
+      <label id="new-todo" htmlFor="new">
+        New Todo
+      </label>
+      <div>
+        <input
+          id="new"
+          name="new-todo"
+          type="text"
+          value={todo.task}
+          onChange={handleInputChange}
+        ></input>
+        <button>Add</button>
+      </div>
+    </form>
+  );
 }
 
 export default NewTodoForm;
