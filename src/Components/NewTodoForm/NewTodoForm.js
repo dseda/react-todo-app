@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import "./NewTodoForm.css";
 
 function NewTodoForm({ addTodo, todos }) {
-  const [todo, setTask] = useState({ task: "", id: "", done: false });
+  const [todo, setTask] = useState({ task: "", id: "", isDone: false });
 
   const handleInputChange = (e) => {
     setTask({ task: e.target.value });
@@ -11,11 +11,11 @@ function NewTodoForm({ addTodo, todos }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (todo.task != "") {
+    if (todo.task !== "") {
       let newTodo = {
         task: todo.task,
         id: uuid(),
-        done: false,
+        isDone: false,
       };
       addTodo([...todos, newTodo]);
       setTask({ task: "" });

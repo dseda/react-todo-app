@@ -1,12 +1,10 @@
 .Todo {
-  width: 100%;
+  width: 80%;
   display: flex;
   margin: 5px auto;
   padding: 30px 25px;
   background-color: #8bc69472;
-  justify-content: space-around;
-  /* border-bottom: 1px rgb(223, 213, 213) solid; */
-  width: 50%;
+  justify-content: space-evenly;
   color: #1f363d;
   min-width: fit-content;
 }
@@ -35,7 +33,9 @@
 }
 li {
   margin: 0 5px;
-  width: 150px;
+  width: 200px;
+  overflow: auto;
+  height: auto;
   text-align: left;
   list-style: none;
   align-self: flex-start;
